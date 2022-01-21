@@ -10,16 +10,24 @@
    - Getting insights about complex problems and large amounts of data.
 
 3. What is a labeled training set?
-    - 
+    - the traing data you feed to the algorithm includes the desired solutions
 4. What are the two most common supervised tasks?
+   - classification, regression
 5. Can you name four common unsupervised tasks?
-6. What type of Machine Learning algorithm would you use to allow a robot to
-walk in various unknown terrains?
+   - clustering
+   - anomaly detection and nvelty detection
+   - visualization and dimensionalith reduction
+   - association rule learning
+6. What type of Machine Learning algorithm would you use to allow a robot to walk in various unknown terrains?
+   - reinforcement learning
 7. What type of algorithm would you use to segment your customers into multiple
 groups?
+    - clustering
 8. Would you frame the problem of spam detection as a supervised learning prob‐
 lem or an unsupervised learning problem?
+    - unsupervised learning problem
 9. What is an online learning system?
+    - 
 10. What is out-of-core learning?
 11. What type of learning algorithm relies on a similarity measure to make predic‐
 tions?
