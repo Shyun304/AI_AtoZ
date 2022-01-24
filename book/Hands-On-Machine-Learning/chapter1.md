@@ -29,19 +29,31 @@ lem or an unsupervised learning problem?
 9. What is an online learning system?
     - it train the system incrementally bu feeding it data instances sequentially. 
 10. What is out-of-core learning?
-    - 
+    - 메모리에 다 올라가지 않을 정도로 큰 데이터를 학습하는 것
 11. What type of learning algorithm relies on a similarity measure to make predic‐
 tions?
+    - instance-based learning
 12. What is the difference between a model parameter and a learning algorithm’s
 hyperparameter?
+    - ???
 13. What do model-based learning algorithms search for? What is the most common
 strategy they use to succeed? How do they make predictions?
+    - ???
 14. Can you name four of the main challenges in Machine Learning?
+    - ???
 15. If your model performs great on the training data but generalizes poorly to new
 instances, what is happening? Can you name three possible solutions?
+    - Overfitting이 발생. 
+      - 1. 더 적은 parameter 수를 이용
+      - 2. 더 많은 training data 수집
+      - 3. training data 의 noise 제거 
 16. What is a test set and why would you want to use it?
+    - 학습에 전혀 사용되지 않은 데이터로 모델을 평가하는 기준이 될 수 있음
 17. What is the purpose of a validation set?
+    - 특정 test set 에서만 잘 작동하는 모델이 만들어질 수도 있으니 여러 가지의 test set을 통해서 평가를 함
 18. What can go wrong if you tune hyperparameters using the test set?
+    - test set에 specific하게 학습되어 새로운 데이터에 적용되지 않을 수 있음
 19. What is repeated cross-validation and why would you prefer it to using a single
 validation set?
+    - 다양한 validation set에 대해 모델의 평가가 이루어지기 때문에 객관적임
     
