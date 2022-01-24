@@ -27,8 +27,9 @@ groups?
 lem or an unsupervised learning problem?
     - unsupervised learning problem
 9. What is an online learning system?
-    - 
+    - it train the system incrementally bu feeding it data instances sequentially. 
 10. What is out-of-core learning?
+    - 
 11. What type of learning algorithm relies on a similarity measure to make predic‐
 tions?
 12. What is the difference between a model parameter and a learning algorithm’s
