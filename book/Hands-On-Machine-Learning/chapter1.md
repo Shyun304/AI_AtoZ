@@ -33,16 +33,14 @@ lem or an unsupervised learning problem?
 11. What type of learning algorithm relies on a similarity measure to make predic‐
 tions?
     - instance-based learning
-12. What is the difference between a model parameter and a learning algorithm’s
-hyperparameter?
-    - ???
-13. What do model-based learning algorithms search for? What is the most common
-strategy they use to succeed? How do they make predictions?
-    - ???
-14. Can you name four of the main challenges in Machine Learning?
-    - ???
-15. If your model performs great on the training data but generalizes poorly to new
-instances, what is happening? Can you name three possible solutions?
+12. What is the difference between a model parameter and a learning algorithm’s hyperparameter?
+    - model parameter은 모델이 학습 하면서 업데이트 되는 값이고 hyperparameter는 초기에 설정을 해줘야 하는 값
+13.  What do model-based learning algorithms search for? What is the most common strategy they use to succeed? How do they make predictions?
+    - 데이터가 아니라 (예 instance base) // 유사도 기반으로 학습하는 것이 아닌 learning algorithm
+    - (이건 추가로 더 정리하자~~)
+14.  Can you name four of the main challenges in Machine Learning?
+    - 충분하지 않은 좋은 퀄리티의 훈련 데이터, 과대적합, 과소적합, 관련이 없는 특징
+15.  If your model performs great on the training data but generalizes poorly to new instances, what is happening? Can you name three possible solutions?
     - Overfitting이 발생. 
       - 1. 더 적은 parameter 수를 이용
       - 2. 더 많은 training data 수집
