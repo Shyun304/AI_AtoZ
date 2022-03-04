@@ -1,3 +1,15 @@
+학습 목표
+1. Linear Regression model 에서, 
+   - "closed-form" equation : directly computes the model parameters that best fit the model to the training set
+   - iterative optimization approach called Gradient Descent (GD) : gradually tweaks the model parameters to minimize the cost function over the training set 
+     - Batch GD, Mini-batch GD, Stochastic GD 
+2. Polynomial Regression
+   - more complex model that can fit nonlinear datasets
+   - more prone to overfitting the training data
+   - several regularization techniques that can reduce the risk of overfitting the training set
+3. Logistic Regression
+4. Softmax Regression
+
 
 
 ## Exercises 
