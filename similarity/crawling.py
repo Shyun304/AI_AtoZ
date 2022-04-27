@@ -7,7 +7,7 @@ response = google_images_download.googleimagesdownload()   #class instantiation
 f = open("40names.txt", "r", encoding='UTF-8')
 read = f.read()
 splitname = read.split('\n')
-print(splitname)
+# print(splitname)
 
 SGL = ['유재석', '이광수', '하하 가수', '지석진', '송지효', '강호동', '전소민', '양서찬', '정준하', '박명수', '박나래', '전현무',
          '노홍철', '송은이', '소녀시대 티파니', '마마무 화사', '장도연', '마마무 솔라', '김준현', '이경규', '데프콘', '김태희', '전지현', '송강호',
@@ -18,7 +18,7 @@ SGL = ['유재석', '이광수', '하하 가수', '지석진', '송지효', '강
          '손나은', '노사연', '이무송', '한채영', '최수종', '장나라', '문근영', '박보영', '신세경', '황정음', '윤시윤', '최지우',
          '고두심', '윤여정', '하지원', '강하늘', '김혜수', '진지희', '송혜교', '박보검', '차은우', '김희선', '현빈', '손예진', '베성재', '이민호']
 
-targetname = SGL 
+targetname = splitname 
 
 keyword_40 = ""
 for onename in targetname:
