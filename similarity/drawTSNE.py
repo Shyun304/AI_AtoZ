@@ -1,30 +1,106 @@
 import cv2
+import os
 from os.path import isfile, join
 import numpy as np
 import dlib
+from facenet_pytorch import InceptionResnetV1
+from PIL import Image
+import torchvision.transforms as transforms
+from sklearn.manifold import TSNE
+import matplotlib
+import matplotlib.pyplot as plt 
+from tqdm import tqdm
+import platform
 
-while(True):
-# Capture frame-by-frame
-    ret, frame = cap.read()
-    if not ret:
-       break
-    img = frame
-# Ask the detector to find the bounding boxes of each face. The 1 in the second argument indicates that we should upsample the image 1 #time. This
-# will make everything bigger and allow us to detect more faces.
-   dets = detector(img, 1)
-   print(“Number of faces detected: {}”.format(len(dets)))
-# Now process each face we found.
-   for k, d in enumerate(dets):
-       print(“Detection {}: Left: {} Top: {} Right: {} Bottom:  {}”.format( k, d.left(), d.top(), d.right(), d.bottom()))
- # Get the landmarks/parts for the face in box d.
-       shape = sp(img, d)
- # Compute the 128D vector that describes the face in img identified by
- # shape. In general, if two face descriptor vectors have a Euclidean
- # distance between them less than 0.6 then they are from the same
- # person, otherwise they are from different people. Here we just print
- # the vector to the screen.
-      features.append(facerec.compute_face_descriptor(img, shape))
-      images.append(frame)
-cap.release()
-cv2.destroyAllWindows()
-features = np.array(features) # Converts features array to numpy #array
+print(platform.system()) # 플랫폼 확인
+
+# Window
+if platform.system() == 'Windows':
+    matplotlib.rc('font', family='Malgun Gothic')
+
+to_tensor = transforms.ToTensor()
+model = InceptionResnetV1(pretrained='vggface2').eval()
+
+features = []
+labels = []
+
+input_path = './data'
+for person in tqdm(os.listdir(input_path)):
+
+    for root, dirs, files in os.walk(input_path+'/'+person):
+        for file_name in files:
+            if file_name.split('.')[-1] in ['jpg', 'JPG']:
+                img_path = os.path.join(root, file_name)
+                img = Image.open(img_path).convert('RGB')
+                # print("IMAGE OPENED")
+                tensor = to_tensor(img)
+                # print("TO TENSOR")
+                img_emb = model(tensor.unsqueeze(0))
+                features.append(img_emb[0].tolist())
+                labels.append(person)
+
+features = np.array(features)
+
+
+tsne = TSNE(n_components=2).fit_transform(features)
+
+
+def scale_to_01_range(x):
+    # compute the distribution range
+    value_range = (np.max(x) - np.min(x))
+
+    # move the distribution so that it starts from zero
+    # by extracting the minimal value from all its values
+    starts_from_zero = x - np.min(x)
+
+    # make the distribution fit [0; 1] by dividing by its range
+    return starts_from_zero / value_range
+
+# extract x and y coordinates representing the positions of the images on T-SNE plot
+tx = tsne[:, 0]
+ty = tsne[:, 1]
+
+tx = scale_to_01_range(tx)
+ty = scale_to_01_range(ty)
+
+# initialize a matplotlib plot
+fig = plt.figure()
+ax = fig.add_subplot(111)
+
+namelabels = os.listdir('./downloads')
+# for every class, we'll add a scatter plot separately
+for label in namelabels:
+    # find the samples of the current class in the data
+    indices = [i for i, l in enumerate(namelabels) if l == label]
+
+    # extract the coordinates of the points of this class only
+    current_tx = np.take(tx, indices)
+    current_ty = np.take(ty, indices)
+
+    # convert the class color to matplotlib format
+    # color = np.array(255, dtype=np.float) / 255
+
+    # add a scatter plot with the corresponding color and label
+    ax.scatter(current_tx, current_ty, label=label)
+
+# build a legend using the labels we set previously
+ax.legend(loc='best')
+
+# finally, show the plot
+plt.show()
+
+
+
+
+
+
+
+
+    # images = batch['image'].to(device)
+    # labels += batch['label']
+    # image_paths += batch['image_path']
+
+    # output = model.forward(images)
+
+    # current_outputs = output.cpu().numpy()
+    # features = np.concatenate((outputs, current_outputs))
