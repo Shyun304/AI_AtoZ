@@ -21,6 +21,7 @@ if platform.system() == 'Windows':
 to_tensor = transforms.ToTensor()
 model = InceptionResnetV1(pretrained='vggface2').eval()
 
+## 임베딩 벡터와 라벨 저장하는 array
 features = []
 labels = []
 
@@ -88,19 +89,3 @@ ax.legend(loc='best')
 
 # finally, show the plot
 plt.show()
-
-
-
-
-
-
-
-
-    # images = batch['image'].to(device)
-    # labels += batch['label']
-    # image_paths += batch['image_path']
-
-    # output = model.forward(images)
-
-    # current_outputs = output.cpu().numpy()
-    # features = np.concatenate((outputs, current_outputs))
