@@ -82,5 +82,9 @@ for epoch in range(epochs):
         batch_metrics=metrics, show_running=True, device=device,
         writer=writer
     )
+torch.save(resnet.state_dict(), "classified.pt")
+
+# model_scripted = torch.jit.script(resnet) # Export to TorchScript
+# model_scripted.save('model_scripted.pt') # Save
 
 writer.close()

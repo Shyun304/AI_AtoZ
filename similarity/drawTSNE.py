@@ -68,11 +68,12 @@ ty = scale_to_01_range(ty)
 fig = plt.figure()
 ax = fig.add_subplot(111)
 
-namelabels = os.listdir('./downloads')
+namelabels = os.listdir('./data')
 # for every class, we'll add a scatter plot separately
 for label in namelabels:
     # find the samples of the current class in the data
-    indices = [i for i, l in enumerate(namelabels) if l == label]
+    indices = [i for i, l in enumerate(labels) if l == label]
+    print("======>",indices)
 
     # extract the coordinates of the points of this class only
     current_tx = np.take(tx, indices)
